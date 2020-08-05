@@ -1,0 +1,48 @@
+
+/////////////////////////
+ABOUT
+/////////////////////////
+
+
+This project '/JS Project' was a project I began working on after picking up two hobbies after coronavrius: javascript and the stock market. I came from a background in Java having completed several computer science classes in highschool and my freshman year at UPenn.
+
+
+/////////////////////////
+Project Goal
+/////////////////////////
+
+
+My final goal for the project was to combine a client/server connection over node.js with an integrated neural network to advise clients on stock market buy/sell descisions.
+
+
+/////////////////////////
+Current Project State
+/////////////////////////
+
+As is, the project still has yet to be completed. What I have are both contained in separate development folders '/NeuralNetworkDev' and '/ServerDev' which I shall explain below.
+
+	'/ServerDev'
+
+	*Important* From the command line, after changing directory, be sure to run the following commands to install dependencies:
+		- 'npm install express'
+		- 'npm install socket.io'
+
+	- This folder contains all of the necessary requirements for running the node.js server.
+	- This folder also contains a 'server.js' file which is what I call from the mac terminal to start the server.
+	- This folder also contains a '/public' folder which 'server.js' will forward to the client when the connect to the node.js server.
+
+	Open the terminal and change directory to ServerDev. Then running 'node server.js' will start the server listening for connections currently set to 'http://localhost:9000'. When the client connects to 'http://localhost:9000' in the browser, they are given the '/public' folder.
+
+	The client will be given a webpage that allows them to enter a legal stock ticker (i.e. no false ticker check was implemented). Upon entering the ticker and pressing the get data button, the server is notified to use the webscraper to find the stock information and displays that on only that client's page.
+
+
+	'/NeuralNetworkDev'
+
+	*Important* From the command line, after changing directory, be sure to run the following commands to install dependencies:
+		- 'npm install puppeteer'
+
+	-This folder contains three files 'math.js', 'brain.js', and 'script.js'.
+	-'math.js' is used to easily call arithmetic/calculus functions in dealing with the neural network.
+	-'brain.js' returns the brain object which is built by specifying a number of layers, the depth of any layer that isn't the output layer, and the number of outputs.
+	-'script.js' can be called from the mac terminal to test the brain. It begins with training data which in this case is 3-dimensional. The label data corresponds to the function x > y + z. The brain is first assessed on it random initialization and usually preforms with an expected %12.5 accuracy. Then the brain is trained over the data and assessed. In this example, the brain used represents a 2 layers brain with the first layer being 2 deep and the final layer being 1 deep, which is overkill for the simple linear separation problem but demonstrates reusability.
+
